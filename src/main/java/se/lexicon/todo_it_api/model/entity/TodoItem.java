@@ -32,4 +32,5 @@ public class TodoItem {
     )
     @JoinColumn(name = "assignee_id")
     private Person assignee;
+
 }
