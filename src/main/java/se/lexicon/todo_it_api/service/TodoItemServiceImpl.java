@@ -99,7 +99,15 @@ public class TodoItemServiceImpl implements TodoItemService {
 
     @Override
     public List<TodoItemDto> findByDeadlineAfter(LocalDate localDate) {
-        return null;
+        List<TodoItemDto> todoItemDtos = new ArrayList<>();
+        for(TodoItem todoItem: todoItemDao.findByDeadlineAfter(localDate)){
+
+            todoItemDtos.add(convert.toTodoDto(todoItem));
+
+        }
+
+
+        return todoItemDtos;
     }
 
     @Override
