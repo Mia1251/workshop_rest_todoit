@@ -70,12 +70,29 @@ public class TodoItemServiceImpl implements TodoItemService {
 
     @Override
     public List<TodoItemDto> findAllUnassigned() {
-        return null;
+        List<TodoItemDto> todoItemDtos = new ArrayList<>();
+        for(TodoItem todoItem: todoItemDao.findUnassignedTodoItems()){
+
+            todoItemDtos.add(convert.toTodoDto(todoItem));
+
+        }
+
+        return todoItemDtos;
+
+
     }
 
     @Override
     public List<TodoItemDto> findAllUnfinishedAndOverdue() {
-        return null;
+        List<TodoItemDto> todoItemDtos = new ArrayList<>();
+        for(TodoItem todoItem: todoItemDao.findAllUnfinishedAndOverdue()){
+
+            todoItemDtos.add(convert.toTodoDto(todoItem));
+
+        }
+
+
+        return todoItemDtos;
     }
 
     @Override
