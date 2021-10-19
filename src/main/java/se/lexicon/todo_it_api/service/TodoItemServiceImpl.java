@@ -57,7 +57,7 @@ public class TodoItemServiceImpl implements TodoItemService {
 
     @Override
     public List<TodoItemDto> findAllByPersonId(Integer personId) {
-
+    return null;
     }
 
     @Override
