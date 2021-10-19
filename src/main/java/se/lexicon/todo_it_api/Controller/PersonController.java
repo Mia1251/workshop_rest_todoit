@@ -1,0 +1,26 @@
+package se.lexicon.todo_it_api.Controller;
+
+import org.springframework.http.ResponseEntity;
+import se.lexicon.todo_it_api.dto.PersonDto;
+import se.lexicon.todo_it_api.dto.TodoItemDto;
+import se.lexicon.todo_it_api.form.PersonFormDto;
+
+import java.util.Collection;
+
+public interface PersonController {
+    ResponseEntity<PersonDto> assignTodoItem(Integer personId, Integer todoItemId);
+    ResponseEntity<PersonFormDto> create(PersonFormDto personFormDto);
+    ResponseEntity<String> deletePerson(Integer personId);
+    ResponseEntity<?> find(String type);
+    ResponseEntity<Collection<PersonDto>> findAll();
+    ResponseEntity<PersonDto> findById(Integer personId);
+    ResponseEntity<Collection<PersonDto>> findIdlePeople();
+    ResponseEntity<Collection<TodoItemDto>> getTodoItems(Integer todoItemId);
+    ResponseEntity<PersonDto> removeTodoItem(Integer personId,Integer todoItemId);
+    ResponseEntity<PersonDto> update(Integer personId, PersonFormDto personFormDto);
+
+
+
+
+
+}

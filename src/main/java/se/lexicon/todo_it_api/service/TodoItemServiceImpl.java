@@ -112,22 +112,50 @@ public class TodoItemServiceImpl implements TodoItemService {
 
     @Override
     public List<TodoItemDto> findByDeadlineBefore(LocalDate localDate) {
-        return null;
+
+        List<TodoItemDto> todoItemDtos = new ArrayList<>();
+        for(TodoItem todoItem: todoItemDao.findByDeadLineBefore(localDate)){
+
+            todoItemDtos.add(convert.toTodoDto(todoItem));
+
+        }
+
+
+        return todoItemDtos;
     }
 
     @Override
     public List<TodoItemDto> findByDeadlineBetween(LocalDate localDate1, LocalDate localDate2) {
-        return null;
+        List<TodoItemDto> todoItemDtos = new ArrayList<>();
+        for(TodoItem todoItem: todoItemDao.findByDeadlineBetween(localDate1,localDate2)){
+
+            todoItemDtos.add(convert.toTodoDto(todoItem));
+
+        }
+
+
+        return todoItemDtos;
     }
 
     @Override
     public List<TodoItemDto> findByDoneStatus(boolean done) {
-        return null;
+        List<TodoItemDto> todoItemDtos = new ArrayList<>();
+        for(TodoItem todoItem: todoItemDao.findByDoneStatus(done)){
+
+            todoItemDtos.add(convert.toTodoDto(todoItem));
+
+        }
+
+
+        return todoItemDtos;
+
     }
 
     @Override
     public TodoItemDto findById(Integer todoItemId) {
-        return null;
+        Optional<TodoItem> foundById = todoItemDao.findById(todoItemId);
+        TodoItem todoItem = foundById.orElseThrow(() -> new AppResourceNotFoundException("Could not find TodoItem By Id " + todoItemId));
+        return convert.toTodoItem(todoItem);
     }
 
     @Override
