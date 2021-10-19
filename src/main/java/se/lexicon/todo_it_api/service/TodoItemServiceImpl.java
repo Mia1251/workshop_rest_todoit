@@ -3,6 +3,7 @@ package se.lexicon.todo_it_api.service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import se.lexicon.todo_it_api.conversions.ConversionService;
 import se.lexicon.todo_it_api.data.PersonDAO;
 import se.lexicon.todo_it_api.data.TodoItemDAO;
@@ -155,7 +156,7 @@ public class TodoItemServiceImpl implements TodoItemService {
     public TodoItemDto findById(Integer todoItemId) {
         Optional<TodoItem> foundById = todoItemDao.findById(todoItemId);
         TodoItem todoItem = foundById.orElseThrow(() -> new AppResourceNotFoundException("Could not find TodoItem By Id " + todoItemId));
-        return convert.toTodoItem(todoItem);
+        return convert.toTodoDto(todoItem);
     }
 
     @Override
@@ -164,6 +165,7 @@ public class TodoItemServiceImpl implements TodoItemService {
     }
 
     @Override
+    @Transactional
     public TodoItemDto update(Integer todoItemId, TodoItemFormDto todoItemFormDto) {
         return null;
     }

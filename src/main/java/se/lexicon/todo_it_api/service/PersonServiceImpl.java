@@ -6,6 +6,7 @@ import se.lexicon.todo_it_api.conversions.ConversionService;
 import se.lexicon.todo_it_api.data.PersonDAO;
 import se.lexicon.todo_it_api.data.TodoItemDAO;
 import se.lexicon.todo_it_api.dto.PersonDto;
+import se.lexicon.todo_it_api.exception.AppResourceNotFoundException;
 import se.lexicon.todo_it_api.form.PersonFormDto;
 import se.lexicon.todo_it_api.model.entity.Person;
 
@@ -56,7 +57,7 @@ public class PersonServiceImpl implements PersonService{
     @Override
     public PersonDto findById(Integer personId) {
         Optional<Person> foundById = personDao.findById(personId);
-        Person person = foundById.orElse(());
+        Person person = foundById.orElse;
         return null;
     }
 
