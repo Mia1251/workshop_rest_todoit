@@ -33,33 +33,45 @@ public class PersonRestController implements PersonController {
 
     @Override
     @PostMapping("/todo/api/v1/")
-    public ResponseEntity<PersonFormDto> create(@RequestBody PersonFormDto personFormDto) {
+    public ResponseEntity<PersonDto> create(@RequestBody PersonFormDto personFormDto) {
 
         PersonDto personDto = personService.create(personFormDto);
-        Person person = convert.
-
-
-        return
+        return ResponseEntity.status(HttpStatus.CREATED).body(personDto);
     }
 
     @Override
-    public ResponseEntity<String> deletePerson(Integer personId) {
-        return null;
+    @DeleteMapping("/todo/api/v1/{id}")
+    public ResponseEntity<String> deletePerson(@PathVariable("id") Integer personId){
+
+        personService.delete(personId);
+
+            return ResponseEntity.ok().build();
+
+
     }
 
     @Override
     public ResponseEntity<?> find(String type) {
+
+
+
         return null;
     }
 
     @Override
     public ResponseEntity<Collection<PersonDto>> findAll() {
-        return null;
+
+        Collection<PersonDto> personDtos = personService.findAll();
+
+        return ResponseEntity.ok(personDtos);
     }
 
     @Override
     public ResponseEntity<PersonDto> findById(Integer personId) {
-        return null;
+
+        PersonDto personDto = personService.findById(personId);
+
+        return ResponseEntity.ok(personDto);
     }
 
     @Override
