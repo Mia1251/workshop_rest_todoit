@@ -44,19 +44,18 @@ public class PersonRestController implements PersonController {
     }
 
     @Override
-    @DeleteMapping("/todo/api/v1/{id}")
-    public ResponseEntity<String> deletePerson(@PathVariable("id") Integer personId){
+    @DeleteMapping("/todo/api/v1/persons/{id}")
+    public ResponseEntity<String> deletePerson(@PathVariable("id") Integer personId) {
 
         personService.delete(personId);
 
-            return ResponseEntity.ok().build();
+        return ResponseEntity.ok().build();
 
 
     }
 
     @Override
     public ResponseEntity<?> find(String type) {
-
 
 
         return null;
@@ -72,7 +71,8 @@ public class PersonRestController implements PersonController {
     }
 
     @Override
-    public ResponseEntity<PersonDto> findById(Integer personId) {
+    @GetMapping("/todo/api/v1/persons/{id}")
+    public ResponseEntity<PersonDto> findById(@PathVariable("id") Integer personId) {
 
         PersonDto personDto = personService.findById(personId);
 
@@ -80,22 +80,38 @@ public class PersonRestController implements PersonController {
     }
 
     @Override
+    @GetMapping("/todo/api/v1/persons/findIdlePeople")
     public ResponseEntity<Collection<PersonDto>> findIdlePeople() {
-        return null;
+
+        Collection<PersonDto> personDtos = personService.findIdlePeople();
+
+        return ResponseEntity.ok(personDtos);
     }
 
     @Override
     public ResponseEntity<Collection<TodoItemDto>> getTodoItems(Integer todoItemId) {
+
+        // Collection<TodoItemDto> TodoItemDtos = todoItemService.();
+
         return null;
     }
 
     @Override
+    @DeleteMapping("/todo/api/v1/persons/{id}")
     public ResponseEntity<PersonDto> removeTodoItem(Integer personId, Integer todoItemId) {
-        return null;
+
+        personService.removeTodoItem(personId, todoItemId);
+
+        return ResponseEntity.ok().build();
     }
 
+
+
     @Override
-    public ResponseEntity<PersonDto> update(Integer personId, PersonFormDto personFormDto) {
-        return null;
+    @PutMapping("/todo/api/v1/persons/{id}")
+    public ResponseEntity<PersonDto> update(@PathVariable("id") Integer personId,@RequestBody PersonFormDto personFormDto) {
+
+
+        return ResponseEntity.ok().body(personService.update(personId, personFormDto));
     }
 }
