@@ -28,12 +28,17 @@ public class PersonRestController implements PersonController {
         this.personService = personService;
         this.todoItemService = todoItemService;
         this.convert = convert;
-    }
 
-    @Override
-    public ResponseEntity<PersonDto> assignTodoItem(Integer personId, Integer todoItemId) {
-        return null;
     }
+        @Override
+    @GetMapping("/todo/api/v1/persons/{personid}/{todoitemid}")
+    public ResponseEntity<PersonDto> assignTodoItem(@PathVariable("personid") Integer personId,@PathVariable("todoitemid") Integer todoItemId) {
+
+        PersonDto personDto = personService.addTodoItem(personId, todoItemId);
+
+            return ResponseEntity.ok(personDto);
+
+        }
 
     @Override
     @PostMapping("/todo/api/v1/")
