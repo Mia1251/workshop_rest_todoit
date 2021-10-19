@@ -57,7 +57,15 @@ public class TodoItemServiceImpl implements TodoItemService {
 
     @Override
     public List<TodoItemDto> findAllByPersonId(Integer personId) {
-    return null;
+
+        List<TodoItemDto> todoItemDtos = new ArrayList<>();
+        for(TodoItem todoItem: todoItemDao.findAll()){
+            if (todoItem.getAssignee().getPersonId()==personId){
+                todoItemDtos.add(convert.toTodoDto(todoItem));
+            }
+        }
+
+    return todoItemDtos;
     }
 
     @Override
