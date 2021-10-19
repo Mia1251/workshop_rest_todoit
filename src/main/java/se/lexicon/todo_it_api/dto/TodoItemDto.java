@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Service
 public class TodoItemDto {
 
     private Integer toDoId;
