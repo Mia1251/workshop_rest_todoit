@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public interface TodoItemController {
 
-    ResponseEntity<TodoItemDto> create(TodoItemFormDto todoItemFormDto);
+    ResponseEntity<TodoItemFormDto> create(TodoItemFormDto todoItemDto);
     ResponseEntity<String> delete(Integer todoItemId);
     ResponseEntity<Collection<TodoItemDto>> find(String title, String[] todoLeft);  // Not completed fully!
     ResponseEntity<TodoItemDto> findById(Integer todoItemId);

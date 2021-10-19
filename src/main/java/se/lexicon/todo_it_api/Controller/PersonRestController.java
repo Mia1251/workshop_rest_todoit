@@ -2,10 +2,9 @@ package se.lexicon.todo_it_api.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import se.lexicon.todo_it_api.conversions.ConversionService;
 import se.lexicon.todo_it_api.dto.PersonDto;
 import se.lexicon.todo_it_api.dto.TodoItemDto;
@@ -18,15 +17,13 @@ import java.util.Collection;
 @RestController
 public class PersonRestController implements PersonController {
 
-    private PersonServiceImpl personService;
-    private ConversionService convert;
+    private final PersonServiceImpl personService;
+    private final ConversionService convert;
 
     @Autowired
-    public PersonRestController(PersonServiceImpl personService,
-                                ConversionService convert){
+    public PersonRestController(PersonServiceImpl personService, ConversionService convert) {
         this.personService = personService;
         this.convert = convert;
-
     }
 
     @Override
@@ -77,6 +74,11 @@ public class PersonRestController implements PersonController {
 
     @Override
     public ResponseEntity<PersonDto> removeTodoItem(Integer personId, Integer todoItemId) {
+        return null;
+    }
+
+    @Override
+    public ResponseEntity<PersonDto> update(Integer personId, PersonFormDto personFormDto) {
         return null;
     }
 }

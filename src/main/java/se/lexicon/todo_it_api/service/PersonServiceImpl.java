@@ -1,6 +1,7 @@
 package se.lexicon.todo_it_api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import se.lexicon.todo_it_api.conversions.ConversionService;
 import se.lexicon.todo_it_api.data.PersonDAO;
 import se.lexicon.todo_it_api.data.TodoItemDAO;
@@ -11,6 +12,7 @@ import se.lexicon.todo_it_api.model.entity.Person;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PersonServiceImpl implements PersonService{
 
     private final PersonDAO personDao;
