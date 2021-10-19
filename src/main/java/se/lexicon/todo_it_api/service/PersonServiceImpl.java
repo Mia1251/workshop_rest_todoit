@@ -53,6 +53,8 @@ public class PersonServiceImpl implements PersonService{
 
     @Override
     public PersonDto findById(Integer personId) {
+        Optional<Person> foundById = personDao.findById(personId);
+        Person person = foundById.orElse(());
         return null;
     }
 
@@ -67,8 +69,19 @@ public class PersonServiceImpl implements PersonService{
     }
 
     @Override
-    public PersonDto update(Integer personId, PersonFormDto personFormDto) {
+    public PersonDto update(Integer personId, PersonFormDto updateForm) {
 
-        return null;
+        Optional<Person> foundPerson = personDao.findById(personId);
+
+        if (foundPerson.isPresent()) {
+            foundPerson.get().setFirstName(updateForm.getFirstName());
+            foundPerson.get().setLastName(updateForm.getLastName());
+            foundPerson.get().setBirthDate(updateForm.getBirthDate());
+        }
+        if (foundPerson.isPresent()){
+            return convert.toPersonDto(foundPerson.get());
+        }else {
+            throw new IllegalArgumentException("Could not find Person By Id");
+        }
     }
 }

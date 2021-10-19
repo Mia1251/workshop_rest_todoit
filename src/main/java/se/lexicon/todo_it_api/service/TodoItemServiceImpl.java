@@ -7,12 +7,14 @@ import se.lexicon.todo_it_api.conversions.ConversionService;
 import se.lexicon.todo_it_api.data.PersonDAO;
 import se.lexicon.todo_it_api.data.TodoItemDAO;
 import se.lexicon.todo_it_api.dto.TodoItemDto;
+import se.lexicon.todo_it_api.exception.AppResourceNotFoundException;
 import se.lexicon.todo_it_api.form.TodoItemFormDto;
 import se.lexicon.todo_it_api.model.entity.TodoItem;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TodoItemServiceImpl implements TodoItemService {
