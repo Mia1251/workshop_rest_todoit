@@ -11,6 +11,7 @@ import se.lexicon.todo_it_api.dto.TodoItemDto;
 import se.lexicon.todo_it_api.form.PersonFormDto;
 import se.lexicon.todo_it_api.model.entity.Person;
 import se.lexicon.todo_it_api.service.PersonServiceImpl;
+import se.lexicon.todo_it_api.service.TodoItemServiceImpl;
 
 import java.util.Collection;
 
@@ -18,11 +19,14 @@ import java.util.Collection;
 public class PersonRestController implements PersonController {
 
     private final PersonServiceImpl personService;
+    private final TodoItemServiceImpl todoItemService;
     private final ConversionService convert;
 
     @Autowired
-    public PersonRestController(PersonServiceImpl personService, ConversionService convert) {
+    public PersonRestController(PersonServiceImpl personService,
+                                ConversionService convert, TodoItemServiceImpl todoItemService) {
         this.personService = personService;
+        this.todoItemService = todoItemService;
         this.convert = convert;
     }
 
@@ -59,6 +63,7 @@ public class PersonRestController implements PersonController {
     }
 
     @Override
+    @GetMapping("/todo/api/v1/persons")
     public ResponseEntity<Collection<PersonDto>> findAll() {
 
         Collection<PersonDto> personDtos = personService.findAll();
