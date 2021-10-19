@@ -102,8 +102,8 @@ public class PersonRestController implements PersonController {
     }
 
     @Override
-    @DeleteMapping("/todo/api/v1/persons/{id}")
-    public ResponseEntity<PersonDto> removeTodoItem(Integer personId, Integer todoItemId) {
+    @DeleteMapping("/todo/api/v1/persons/{personid}/{todoitemid}")
+    public ResponseEntity<PersonDto> removeTodoItem(@PathVariable("personid") Integer personId,@PathVariable("todoitemid") Integer todoItemId) {
 
         personService.removeTodoItem(personId, todoItemId);
 
